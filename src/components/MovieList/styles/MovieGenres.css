@@ -1,0 +1,38 @@
+.genreBox {
+    padding: 1.2rem;
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    margin-bottom: 1.3rem;
+}
+
+.selectContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+}
+
+.genreDropDown {
+    width: 100%;
+    max-width: 300px;
+    padding: 2rem;
+    font-size: 1rem;
+    margin: 1rem auto;
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+    margin-top: 1.2rem;
+    font-weight: 100;
+}
+
+.genre {
+    color: black;
+    background-color: var(--gray-color);
+}
+
+.selected {
+    background-color: #E42C5F;
+    color: var(--white-color);
+}

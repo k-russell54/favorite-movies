@@ -1,0 +1,33 @@
+.inputArea {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.inputBox:focus {
+  border-color: #007bff; 
+  box-shadow: 0px 0px 5px rgba(0, 123, 255, 0.5); 
+}
+
+
+.btn {
+  align-self: center;
+  padding: 8px 20px;
+  border-radius: 8px;
+  border: 2px solid black;
+  color: var(--white-color);
+  font-size: 1rem;
+}
+
+.btn.add {
+    background-color: #e42c5f;
+  }  
+
+.btn.clear {
+  margin: 10px;
+  background-color: #2d41a7;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+}

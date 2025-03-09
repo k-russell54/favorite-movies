@@ -1,4 +1,4 @@
-import { useMovies } from "../../MovieListProvider";
+import { useMovies } from "../context/MovieListProvider";
 import ModalWindow from "./ModalWindow";
 
 export default function MovieListWrapper() {

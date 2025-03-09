@@ -1,4 +1,4 @@
-import { useMovies } from "../../MovieListProvider";
+import { useMovies } from "../context/MovieListProvider";
 
 export default function ModalCloseButton() {
   const { setModalIsActive } = useMovies();
