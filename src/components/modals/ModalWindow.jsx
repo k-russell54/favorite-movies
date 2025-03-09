@@ -2,7 +2,7 @@ import "./MovieModal.css";
 import AddMovieModal from "./AddMovieModal";
 import ModalCloseButton from "./ModalCloseButton";
 import { useEffect } from "react";
-import { useMovies } from "../../MovieListProvider";
+import { useMovies } from "../context/MovieListProvider";
 
 export default function ModalWindow() {
   const { setModalIsActive, setNewMovie } = useMovies();

@@ -1,0 +1,7 @@
+.titleBox {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 30px;
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }

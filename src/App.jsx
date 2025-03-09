@@ -1,7 +1,7 @@
 import "./styles.css";
-import MovieList from "./components/MovieList.jsx";
-import MovieListProvider from "./MovieListProvider.jsx";
-import MovieListWrapper from "./components/modals/MovieListWrapper.jsx";
+import MovieList from "./components/MovieList/MovieList";
+import MovieListProvider from "./components/context/MovieListProvider";
+import MovieListWrapper from "./components/modals/MovieListWrapper";
 
 export default function App() {
   return (
