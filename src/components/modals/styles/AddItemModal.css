@@ -1,0 +1,30 @@
+.form {
+  position: relative;
+}
+  
+.addTitle {
+  margin-bottom: 20px;
+  text-align: center;
+  font-size: clamp(1.42rem, 2vw, 1.8rem);
+}
+  
+  
+.labelBoxFlex {
+  display: flex;
+  flex-direction: column;
+}
+
+.lineBarrier {
+  border: 1px solid var(--primary-color);
+  margin-top: .4rem;
+  margin-bottom: .4rem;
+}
+
+@media (max-width: 450px) {
+  .addTitle {
+    margin-bottom: 5px;
+    margin-top: 25px;
+  }
+}
+
+  

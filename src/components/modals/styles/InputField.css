@@ -1,0 +1,49 @@
+input, select, textarea {
+    font-size: 12px;
+    font-weight: 400;
+    font-size: 1.1rem;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+    border: 2px solid #c2c2c2;
+    border-radius: 4px;
+    padding: 8px 12px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 10px;
+}
+
+
+.labelBox {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.labelText {
+    font-size: 1.2rem;
+}
+
+.labelBox label {
+    display: flex;
+    padding-top: 15px;
+    width: 30%;
+    justify-content: flex-end;
+}
+
+.inputBox {
+    display: flex;
+    padding: 5px;
+}
+
+@media (max-width: 450px) {
+    .labelBox {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    } 
+
+    .labelBox label {
+        width: 100%;
+        justify-content: center;
+    }
+}

@@ -1,0 +1,14 @@
+.close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    cursor: pointer;
+    background-color: #fff;
+    font-size: 1.5rem;
+    border: none;
+  }
+
+.close:hover {
+transform: scale(1.1);
+}
+

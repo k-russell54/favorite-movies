@@ -1,0 +1,38 @@
+/*global button style*/
+.btn {
+    align-self: center;
+    text-align: center;
+    font-size: 1rem;
+    padding: 0.5rem 1.25rem;
+    border-radius: 10px;
+    border: 2px solid black;
+    width: 9rem;
+  } 
+  
+  .btn.add {
+      background-color: #e42c5f;
+      color: var(--white-color);
+    }  
+  
+  .btn:hover {
+    transform: scale(1.05);
+  }
+
+  .btn.filter {
+    color: black;
+  }
+
+  @media (max-width: 450px) {
+    .btn {
+        font-size: .8rem;
+        padding: 0.5rem .8rem;
+        width: 6.6rem;
+        border: 2px solid black;
+        margin: 0;
+        box-sizing: border-box;
+        flex-shrink: 1;
+      } 
+
+}
+
+

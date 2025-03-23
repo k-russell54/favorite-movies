@@ -1,0 +1,9 @@
+.genre {
+    color: black;
+    background-color: var(--gray-color);
+}
+
+.selected {
+    background-color: #E42C5F;
+    color: var(--white-color);
+}

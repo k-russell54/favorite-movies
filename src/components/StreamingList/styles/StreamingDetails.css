@@ -1,0 +1,68 @@
+.streamingDetailsContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.streamingTitle {
+    margin-top: .3rem;
+    margin-bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+    text-align: center;
+}
+
+.streamingType {
+    margin: auto;
+    padding: .4rem;
+    font-weight: 100;
+}
+
+.streamingGenres {
+    margin-bottom: 8px;
+}
+
+.userInfoBox {
+    border-top: 2px solid #e42c5f;
+}
+
+.addedBy {
+    margin-top: .4rem;
+}
+
+.userName {
+    font-size: 1.1rem;
+    color: #e42c5f;
+    font-weight: bold;
+}
+
+.userComments {
+    font-style: italic;
+    white-space: normal; 
+    overflow: visible; 
+    text-overflow: unset; 
+    display: inline; 
+    word-wrap: break-word; 
+}
+
+
+.providerLogos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 15px;
+    gap: 5px;
+}
+
+.providerLogo {
+    width: 40px; /* Adjust to your preferred size */
+    height: auto;
+  }
+
+.availableOn {
+    font-weight: bold;
+}
+  
+

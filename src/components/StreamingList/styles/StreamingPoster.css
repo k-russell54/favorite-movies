@@ -1,0 +1,8 @@
+.streamingPoster {
+    max-width: 9.4rem;
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin: auto;
+    display: block;
+  }

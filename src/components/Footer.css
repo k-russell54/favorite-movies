@@ -1,0 +1,19 @@
+.footerBox {
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    padding: 15px;
+    text-align: center;
+    width: 100vw;
+    font-size: clamp(.8rem, 2vw, 1.2rem);
+}
+
+.footerFlex {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+
+.footerBox img {
+    margin-left: .3rem;
+    margin-top: .3rem;
+}

@@ -1,17 +1,18 @@
-import "./MovieModal.css";
-import AddMovieModal from "./AddMovieModal";
+import "./styles/ModalWindow.css"; 
 import ModalCloseButton from "./ModalCloseButton";
 import { useEffect } from "react";
-import { useMovies } from "../context/MovieListProvider";
+import { useStreaming } from "../context/StreamingProvider";
+import { useUI } from "../context/UIProvider";
 
-export default function ModalWindow() {
-  const { setModalIsActive, setNewMovie } = useMovies();
+export default function ModalWindow({ children, onClose }) {
+  const { setNewStreamingItem } = useStreaming(); 
+  const { setModalIsActive } = useUI();
 
   useEffect(() => {
     function handleKeyDown(e) {
       if (e.key === "Escape") {
         setModalIsActive(false);
-        setNewMovie("");
+        setNewStreamingItem(""); 
       }
     }
 
@@ -20,16 +21,14 @@ export default function ModalWindow() {
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [setModalIsActive]);
+  }, [onClose]);
 
   return (
-    <>
-      <div className="modalWrapper">
-        <div className="inner">
-          <AddMovieModal />
-          <ModalCloseButton />
-        </div>
+    <div className="modalWrapper">
+      <div className="inner">
+        <ModalCloseButton onClick={onClose} />
+        {children}
       </div>
-    </>
+    </div>
   );
 }

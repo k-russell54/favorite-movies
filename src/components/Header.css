@@ -5,4 +5,11 @@
     text-align: center;
     margin-bottom: 1.5rem;
     width: 100vw;
+    font-size: clamp(.8rem, 2vw, 1.2rem);
   }
+
+  @media (max-width: 355px) {
+    .titleBox {
+        font-size: 1rem;
+    }
+}

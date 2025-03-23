@@ -1,18 +1,13 @@
-import { useMovies } from "../context/MovieListProvider";
+import "./styles/ModalCloseButton.css";
 
-export default function ModalCloseButton() {
-  const { setModalIsActive } = useMovies();
+export default function ModalCloseButton({ onClick }) {
 
   return (
-    <>
-      <button
-        onClick={() => {
-          setModalIsActive(false);
-        }}
-        className="deleteBtn close"
-      >
-        X
-      </button>
-    </>
+    <button
+      onClick={onClick}
+      className="close"
+    >
+      X
+    </button>
   );
 }
