@@ -7,7 +7,7 @@ export default function Footer() {
             <div className="footerFlex">
                 <p>Data and images provided by</p>
                 <a href="https://www.themoviedb.org/" target="_blank">
-                <img src="./imgs/TMDB logo.svg" alt="TMDB Logo" width="150" />
+                <img src="/images/tmdb-logo.svg" alt="TMDB Logo" className="tmdbLogo" />
                 </a>
             </div>
         </div>
