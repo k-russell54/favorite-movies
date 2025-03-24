@@ -21,3 +21,15 @@
     max-width: 600px;
     width: 90%;
   }
+
+  @media (max-width: 450px) {
+    .inner {
+      width: 100vw;
+      height: 100vh;
+      border-radius: 0;
+      padding: 1.5rem;
+      justify-content: flex-start; /* optional: align content to top */
+      overflow-y: auto; /* allow scroll if content overflows */
+    }
+  }
+  
