@@ -13,7 +13,6 @@ import { useFilters } from '../context/FiltersProvider';
 export default function Filters() {
     const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
     const [showFilterModal, setShowFilterModal] = useState(false);
-
     const {selectedBrowseBy, selectedGenre, selectedService, selectedUser} = useFilters();
 
     const isAnyFilterActive = 

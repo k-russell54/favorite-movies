@@ -124,7 +124,7 @@ export default function StreamingProvider({ children }) {
       .sort((a, b) => a.provider_name.length - b.provider_name.length) // ✅ Prioritize shorter names first
       .filter(provider => {
         const baseName = provider.provider_name
-          .replace(/\b(with ads|Amazon Channel|through Prime Video|via Apple TV|on Spectrum|Spectrum|Apple TV Plus Amazon Channel)\b/gi, '') // ❌ Remove unwanted terms
+          .replace(/\b(Basic with ads|with ads|Amazon Channel|through Prime Video|via Apple TV|on Spectrum|Spectrum|Apple TV Plus Amazon Channel)\b/gi, '') // ❌ Remove unwanted terms
           .trim();
     
         if (
