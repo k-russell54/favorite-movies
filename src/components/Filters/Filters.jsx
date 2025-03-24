@@ -8,10 +8,19 @@ import UserFilter from "./UserFilter";
 import ResetFilters from "./ResetFilters";
 import FilterModalWrapper from "./modals/FilterModalWrapper";
 import Button from '../Button';
+import { useFilters } from '../context/FiltersProvider';
 
 export default function Filters() {
     const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
     const [showFilterModal, setShowFilterModal] = useState(false);
+
+    const {selectedBrowseBy, selectedGenre, selectedService, selectedUser} = useFilters();
+
+    const isAnyFilterActive = 
+        selectedBrowseBy !== 'Browse All' ||
+        selectedGenre !== 'All Genres' ||
+        selectedService !== 'All Services' ||
+        selectedUser !== 'All Users';
 
     useEffect(() => {
         function handleResize() {
@@ -30,7 +39,7 @@ export default function Filters() {
                     <>
                         <Button 
                             parentClass={"addItem"} 
-                            childClass ={"filter"} 
+                            childClass ={`filter ${isAnyFilterActive ? "filterActive" : ""}`} 
                             handleClick={() => setShowFilterModal(true)}
                             btnText='Filters'
                         />
