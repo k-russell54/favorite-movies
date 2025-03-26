@@ -1,5 +1,6 @@
 .streamingListBox {
-    padding: 30px;
+    padding: 30px 0;
+    overflow-x: visible;
     box-shadow: var(--box-shadow);
     display: flex;
     justify-content: center;
@@ -13,6 +14,33 @@
 
 .streamingListBox ul {
     display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-left: 0;
+    padding-right: 3rem;
+    list-style: none;
+    margin: 0;
+    gap: 1rem;
+    scroll-snap-type: mandatory;
+
+    /* border: 1px solid blue; */
+    /* overflow-y: hidden;
+    gap: .5rem;
+    scroll-snap-type: mandatory;
+    -webkit-overflow-scrolling: touch; */
+    /* padding: 1rem; */
 }
+
+.streamingListBox ul::-webkit-scrollbar {
+    display: none;
+  }
+  
+
+.streamingListBox ul li {
+    /* scroll-snap-align: start; */
+    flex: 0 0 auto;
+    width: 16rem;
+    margin-right: 1rem;
+    /* border: 1px solid red; */
+}
+  

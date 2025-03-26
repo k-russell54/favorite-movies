@@ -1,11 +1,14 @@
 .streamingItemBox {
   padding: 1rem;
   border-radius: 5px;
-  margin: 1rem;
-  width: 16rem;
+  margin-bottom: 1rem;
+  margin-top: .5rem;
+  margin-left: 1rem;
+  width: 17rem;
   min-height: 14rem;
   max-height: 50rem;
   box-shadow: 0px 4px 20px rgba(11, 29, 120, 0.6);
   position: relative;
+  /* border: 1px solid orange; */
 }
 

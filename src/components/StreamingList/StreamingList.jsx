@@ -38,11 +38,12 @@ export default function StreamingList() {
       <ul>
         {filteredList.length > 0 ? (
           filteredList.map((streamingItem) => (
-            <StreamingItem 
-              key={streamingItem.id} 
-              streamingItem={streamingItem} 
-              onDelete={handleDelete}
-            />
+            <li key={streamingItem.id}>
+              <StreamingItem
+                streamingItem={streamingItem}
+                onDelete={handleDelete}
+              />
+            </li>
           ))
         ) : (
           <p className="noResults">No streaming items to show!</p>
