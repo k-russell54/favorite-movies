@@ -3,3 +3,9 @@
     justify-content: center;
     margin-top: 15px;
   }
+
+  @media (max-width: 450px) {
+    .btnFlex {
+        margin-top: 10px;
+      }
+  }

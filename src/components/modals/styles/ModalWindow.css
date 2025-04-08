@@ -25,7 +25,7 @@
   @media (max-width: 450px) {
     .inner {
       width: 100vw;
-      height: 90vh;
+      height: 100vh;
       border-radius: 0;
       padding: .7rem;
       justify-content: flex-start; 

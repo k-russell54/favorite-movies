@@ -17,6 +17,7 @@ input, select, textarea {
 .labelBox {
     display: flex;
     flex-wrap: wrap;
+    /* border: 1px solid red; */
 }
 
 .labelText {
@@ -28,6 +29,7 @@ input, select, textarea {
     padding-top: 15px;
     width: 30%;
     justify-content: flex-end;
+    /* border: 1px solid blue; */
 }
 
 .inputBox {
@@ -44,6 +46,16 @@ input, select, textarea {
 
     .labelBox label {
         width: 100%;
+        padding-top: 2px;
         justify-content: center;
     }
+
+    .labelText {
+        font-size: 1.1rem;
+    }
+
+    input, select, textarea {
+        font-size: 1rem;
+    }
+    
 }
