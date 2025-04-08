@@ -1,4 +1,5 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
+import { useStreaming } from "./StreamingProvider";
 
 export const FiltersContext = createContext(null);
 
@@ -15,6 +16,8 @@ const initialRatingsList = ["All Ratings", "<50%", "50-60%", "61-70%", "71-80%",
 
 
 export default function FiltersProvider({ children }) {
+  const { streamingList } = useStreaming();
+
   const [selectedGenre, setSelectedGenre] = useState("All Genres"); 
   const [selectedBrowseBy, setSelectedBrowseBy] = useState("Browse All");
   const [selectedService, setSelectedService] = useState("All Services");
@@ -22,6 +25,16 @@ export default function FiltersProvider({ children }) {
   const [selectedRating, setSelectedRating] = useState("All Ratings");
 
   const [updatedUserList, setUpdatedUserList] = useState(initialUserList);
+
+
+  useEffect(() => {
+    const uniqueUsers = Array.from(new Set(
+      streamingList.map(item => item.user).filter(Boolean)
+    )).sort();
+  
+    setUpdatedUserList(["All Users", ...uniqueUsers]);
+  }, [streamingList]);
+  
 
   return (
     <FiltersContext.Provider

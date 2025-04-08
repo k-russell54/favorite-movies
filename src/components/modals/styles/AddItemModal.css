@@ -20,6 +20,12 @@
   margin-bottom: .4rem;
 }
 
+.helperText {
+  text-align: center;
+  font-style: italic;
+  margin-top: 2rem;
+}
+
 @media (max-width: 450px) {
   .addTitle {
     margin-bottom: 5px;

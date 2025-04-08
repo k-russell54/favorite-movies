@@ -9,19 +9,20 @@ import StreamingListWrapper from "./components/modals/StreamingListWrapper";
 import Footer from "./components/Footer";
 import toCapitalize from "./utils";
 
+
 export default function App() {
   return (
     <>
       <Header />
-      <FiltersProvider>
-        <StreamingProvider>
+      <StreamingProvider>
+        <FiltersProvider>
           <UIProvider>
             <Filters />
             <StreamingListWrapper />
             <StreamingList />
           </UIProvider>
-        </StreamingProvider>
-      </FiltersProvider>
+        </FiltersProvider>
+      </StreamingProvider>
       <Footer />
     </>
   );

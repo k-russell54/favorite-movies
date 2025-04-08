@@ -22,13 +22,6 @@
     margin: 0;
     gap: 1rem;
     scroll-snap-type: mandatory;
-
-    /* border: 1px solid blue; */
-    /* overflow-y: hidden;
-    gap: .5rem;
-    scroll-snap-type: mandatory;
-    -webkit-overflow-scrolling: touch; */
-    /* padding: 1rem; */
 }
 
 .streamingListBox ul::-webkit-scrollbar {
@@ -37,10 +30,21 @@
   
 
 .streamingListBox ul li {
-    /* scroll-snap-align: start; */
     flex: 0 0 auto;
     width: 16rem;
     margin-right: 1rem;
-    /* border: 1px solid red; */
+}
+
+@media (min-width: 750px) {
+    .streamingListBox ul {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 1rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+        padding-left: 1rem;
+        padding-right: 2.2rem;
+    } 
 }
   

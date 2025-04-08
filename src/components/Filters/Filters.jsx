@@ -11,7 +11,7 @@ import Button from '../Button';
 import { useFilters } from '../context/FiltersProvider';
 
 export default function Filters() {
-    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 768);
+    const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth < 1130);
     const [showFilterModal, setShowFilterModal] = useState(false);
     const {selectedBrowseBy, selectedGenre, selectedService, selectedUser} = useFilters();
 
@@ -23,7 +23,7 @@ export default function Filters() {
 
     useEffect(() => {
         function handleResize() {
-            setIsSmallScreen(window.innerWidth < 768);
+            setIsSmallScreen(window.innerWidth < 1130);
         }
 
         window.addEventListener("resize", handleResize);

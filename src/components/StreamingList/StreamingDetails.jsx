@@ -2,8 +2,6 @@ import "./styles/StreamingDetails.css";
 
 export default function StreamingDetails({ name, mediaType, genres, user, comment, providers }) {
     
-    console.log("Providers:", providers);
-
     
     return (
         <div className="streamingDetailsContainer">

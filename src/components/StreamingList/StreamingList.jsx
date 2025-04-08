@@ -1,17 +1,46 @@
 import { useStreaming } from "../context/StreamingProvider";
 import StreamingItem from "./StreamingItem";
 import { useFilters } from "../context/FiltersProvider";
+import { deleteDoc, doc } from "firebase/firestore";
+import { db } from "../../firebase/config";
 import "./styles/StreamingList.css"; 
 import "../../styles.css";
+import Loader from "../Loader";
 
 export default function StreamingList() {
-  const { streamingList, dispatch } = useStreaming();
-  const { selectedBrowseBy, selectedGenre, selectedUser, selectedService, initialServiceList } = useFilters();
+  const { streamingList, dispatch, isLoading } = useStreaming();
+  
+  const { 
+    selectedBrowseBy, 
+    selectedGenre, 
+    selectedUser, 
+    selectedService, 
+    initialServiceList 
+  } = useFilters();
 
 
-  function handleDelete(id) {
-    dispatch({ type: "DELETE", id });
-  } 
+  async function handleDelete(id) {
+    if(confirm('Are you sure you want to delete this item?')) {
+      try {
+        // Remove from Firestore
+        await deleteDoc(doc(db, "streamingItems", id));
+    
+        // Then update local state
+        dispatch({ type: "DELETE", id });
+      } catch (error) {
+        console.error("Error deleting item:", error);
+      }
+    }
+  }
+
+  if (isLoading) {
+    return (
+      <div className="streamingListBox container">
+        <Loader />
+      </div>
+    );
+  }
+  
 
   const filteredList = streamingList.filter((item) => {
     const matchesMediaType =
@@ -26,7 +55,7 @@ export default function StreamingList() {
     const matchesService =
       selectedService === "All Services" ||
       (selectedService === 'Other'
-        ? item.providers?.every(provider => !initialServiceList.includes(provider.name))
+        ? item.providers?.some(provider => !initialServiceList.includes(provider.name))
         : item.providers?.some(provider => provider.name === selectedService)
       )
 
@@ -34,6 +63,7 @@ export default function StreamingList() {
   });
 
   return (
+
     <div className="streamingListBox container">
       <ul>
         {filteredList.length > 0 ? (

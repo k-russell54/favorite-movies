@@ -1,18 +1,19 @@
 import { useStreaming } from "../context/StreamingProvider";
 import "./styles/InputField.css";
 
-export default function SelectMediaType() { 
+export default function SelectMediaType({id, label, required}) { 
 
     const {selectedMediaType, setSelectedMediaType} = useStreaming();
 
     return (
         <div className="labelBox">
-            <label className="labelText">Streaming Type: </label>
+            <label htmlFor={id} className="labelText">{label} </label>
             <div className="inputBox">
                 <select 
-                    id="mediaType"
+                    id={id}
                     value={selectedMediaType} 
                     onChange={(e) => setSelectedMediaType(e.target.value)}
+                    required={required}
             >
                     <option value="selectType">Select Type</option>
                     <option value="movie">Movie</option>

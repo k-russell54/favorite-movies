@@ -1,7 +1,12 @@
 import { useState, useEffect } from "react";
 import "./styles/InputField.css";
 
-export default function PlaceholderTextarea({ value, onChange }) {
+export default function PlaceholderTextarea({ 
+  id,
+  label,
+  value, 
+  onChange 
+}) {
     const placeholders = [
         "I thought about this movie for days!",
         "This one is INTENSE",
@@ -24,7 +29,7 @@ export default function PlaceholderTextarea({ value, onChange }) {
 
     return (
         <div className="labelBox">
-        <label className="labelText">Comments: </label>
+        <label className="labelText" htmlFor={id} >{label}</label>
         <div className="inputBox">
           <textarea
             placeholder={placeholder}

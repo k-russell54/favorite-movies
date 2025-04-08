@@ -1,7 +1,7 @@
 import "../../modals/styles/InputField.css";
 import Button from '../../Button';
 
-export default function ApplyFiltersButton({ closeModal }) {
+export default function ApplyFiltersButton() {
 
     return (
        <div className="labelBox">
@@ -9,7 +9,6 @@ export default function ApplyFiltersButton({ closeModal }) {
                 <Button 
                     parentClass={"addItem"} 
                     childClass ={"reset"} 
-                    handleClick={closeModal} 
                     btnText={"Apply Filters"}
                 />
             </div>

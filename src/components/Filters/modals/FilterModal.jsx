@@ -9,8 +9,15 @@ import "../../modals/styles/AddItemModal.css";
 export default function FilterModal({ closeModal }) {
 
     return (
-        <div className="form">
-            <h2 className="addTitle">Filter Streaming Items:</h2>
+        <form 
+            className="form"
+            onSubmit={(e) => {
+                e.preventDefault();
+                closeModal();
+            }}
+            aria-labelledby="filter-form-title"
+        >
+            <h2 id="filter-form-title" className="addTitle">Filter Streaming Items:</h2>
                 <LabeledBox label="Browse By:">
                     <BrowseByFilter />
                 </LabeledBox>
@@ -23,7 +30,7 @@ export default function FilterModal({ closeModal }) {
                 <LabeledBox label="User:">
                     <UserFilter />
                 </LabeledBox>
-                <ApplyFiltersButton closeModal={closeModal} />
-        </div>
+                <ApplyFiltersButton />
+        </form>
     )
 }

@@ -25,6 +25,8 @@
 
 .userInfoBox {
     border-top: 2px solid #e42c5f;
+    max-height: 5rem;
+    overflow-y: auto;
 }
 
 .addedBy {
@@ -40,10 +42,11 @@
 .userComments {
     font-style: italic;
     white-space: normal; 
-    overflow: visible; 
+    overflow: hidden; 
     text-overflow: unset; 
     display: inline; 
-    word-wrap: break-word; 
+    word-break: break-word; 
+    overflow-wrap: break-word;
 }
 
 

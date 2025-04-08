@@ -7,13 +7,31 @@ import SubmitButton from "./SubmitButton";
 import SelectMediaType from "./SelectMediaType";
 import "./styles/AddItemModal.css";
 import toCapitalize from "../../utils";
+import { db } from "../../firebase/config";
+import { collection, addDoc } from "firebase/firestore";
+
 
 export default function AddItemModal() {
-  const { dispatch, newItemName, setNewItemName, newUserName, setNewUserName, newComment, setNewComment, fetchTitles, selectedMediaType, setSelectedMediaType, fetchStreamingProviders } = useStreaming();
+  const {  
+    newItemName, 
+    setNewItemName, 
+    newUserName, 
+    setNewUserName, 
+    newComment, 
+    setNewComment, 
+    fetchTitles, 
+    selectedMediaType, 
+    setSelectedMediaType, 
+    fetchStreamingProviders,
+    newYearInput,
+    setNewYearInput
+  } = useStreaming();
+
   const { setUpdatedUserList } = useFilters();
   const { setModalIsActive } = useUI();
 
-  async function handleAdd() {
+  async function handleAdd(e) {
+    e.preventDefault();
     if (!newItemName.trim() || !newUserName.trim()) {
       alert("Please fill out the title and your name!");
       setNewItemName("");
@@ -22,7 +40,7 @@ export default function AddItemModal() {
     }
   
     try {
-      const searchResults = await fetchTitles(newItemName, selectedMediaType);
+      const searchResults = await fetchTitles(newItemName, selectedMediaType, newYearInput);
   
       if (searchResults.length === 0) {
         alert("No matching titles found. Please try again.");
@@ -30,65 +48,97 @@ export default function AddItemModal() {
       }
   
       const streamingData = searchResults[0]; // Get first result
+      
       const providers = await fetchStreamingProviders(streamingData.id, selectedMediaType);
 
-      dispatch({ 
-        type: "ADD", 
-        name: streamingData.title,
+      await addDoc(collection(db, "streamingItems"), {
+        title: streamingData.title,
         user: toCapitalize(newUserName),
         comment: newComment,
         mediaType: selectedMediaType,
         poster: streamingData.poster || "",
         genres: streamingData.genres || [],
-        providers
-      });
-  
-      console.log("Dispatching:", streamingData); // ✅ Log dispatched item
-      
+        providers,
+        year: newYearInput || "",
+        timestamp: new Date()
+      });      
+
       setNewItemName("");
       setNewUserName("");
+      setNewYearInput("");
       setNewComment("");
       setSelectedMediaType('Select Type');
       setModalIsActive(false);
+      
       setUpdatedUserList((prevItems) =>
-        prevItems.includes(newUserName) ? prevItems : [...prevItems, toCapitalize(newUserName)]
+        prevItems.includes(newUserName) 
+          ? prevItems 
+          : [...prevItems, toCapitalize(newUserName)]
       );
+
     } catch (error) {
       console.error("Error adding item", error);
-    }
+    } 
   }
 
-  function handleKeyDown(e) {
-    if (e.key === "Enter") {
-      e.preventDefault();
-      handleAdd();
-    }
-  }
 
   return (
-    <div className="form" onKeyDown={handleKeyDown}>
-        <h2 className="addTitle">Add a New Streaming Item</h2>
+    <form 
+      className="form" 
+      onSubmit={handleAdd}
+      aria-labelledby="add-item-form-title"
+    >
+        <h2 id="add-item-form-title" className="addTitle">
+          Add a New Streaming Item
+        </h2>
+
         <div className="labelBoxFlex">
           <InputField 
-            label="Streaming Title:"
+            id="streaming-title"
+            label="*Streaming Title:"
             placeholder="Enter a title..."
             onChange={(e) => setNewItemName(e.target.value)}
             value={newItemName}
+            required
+            aria-required="true"
+            autoFocus
           />
-          <SelectMediaType />
+
+          <SelectMediaType 
+            id="media-type"
+            label="*Streaming Type:"
+            required
+          />
+
+          <InputField
+            id="release-year"
+            label="Release Year:"
+            placeholder="e.g., 2020 (optional)"
+            value={newYearInput}
+            onChange={(e) => setNewYearInput(e.target.value)}
+          />
+
           <div className="lineBarrier"></div>
+
           <InputField 
-            label="Your Name:"
+            id="user-name"
+            label="*Your Name:"
             value={newUserName}
             placeholder="Enter your name..."
             onChange={(e) => setNewUserName(e.target.value)}
+            required
+            aria-required="true"
           />
-          <PlaceholderTextarea 
+
+          <PlaceholderTextarea
+            id="user-comment"
+            label="Comments:" 
             value={newComment}
             onChange={(e) => setNewComment(e.target.value)}
           />
         </div>
-        <SubmitButton onClick={handleAdd} />
-    </div>
+        <SubmitButton type="submit" />
+        <p className="helperText"> Didn't get the right title? Try deleting it and re-adding with the release year! </p>
+    </form>
   );
 }
