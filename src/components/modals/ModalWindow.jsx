@@ -12,7 +12,6 @@ export default function ModalWindow({ children, onClose }) {
     function handleKeyDown(e) {
       if (e.key === "Escape") {
         setModalIsActive(false);
-        setNewStreamingItem(""); 
       }
     }
 
@@ -26,7 +25,9 @@ export default function ModalWindow({ children, onClose }) {
   return (
     <div className="modalWrapper">
       <div className="inner">
-        <ModalCloseButton onClick={onClose} />
+        <ModalCloseButton onClick={() => {
+          setModalIsActive(false);
+        }} />
         {children}
       </div>
     </div>
